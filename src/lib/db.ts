@@ -1,11 +1,9 @@
 import { mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 import Database from "better-sqlite3";
-import { desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import { migrate } from "drizzle-orm/better-sqlite3/migrator";
 import * as schema from "./schema";
-import { type Message, messages } from "./schema";
 import { seed } from "./seed";
 
 // One SQLite file is the app's whole persistent state. In production
@@ -29,13 +27,3 @@ migrate(db, { migrationsFolder: "./drizzle" });
 // Idempotent, so a redeploy or CI's throwaway database don't accumulate
 // duplicate demo rooms.
 seed(db);
-
-export type { Message };
-
-export function listMessages(): Message[] {
-  return db.select().from(messages).orderBy(desc(messages.id)).limit(50).all();
-}
-
-export function addMessage(body: string): Message {
-  return db.insert(messages).values({ body }).returning().get();
-}

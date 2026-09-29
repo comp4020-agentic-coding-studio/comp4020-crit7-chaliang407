@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1784173013185,
-      "tag": "0000_dry_captain_flint",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1790695773375,
-      "tag": "0001_pink_living_tribunal",
+      "when": 1790696216927,
+      "tag": "0000_colossal_tarot",
       "breakpoints": true
     }
   ]
